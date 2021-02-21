@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&family=Playfair+Display:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&family=Lobster&family=Playfair+Display:ital@1&display=swap");
+
 html {
   display: flex;
   flex-wrap: wrap;
@@ -18,15 +19,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* .App {
+  display: flex;
+  flex-wrap: wrap;
+} */
 
 .nav_1 {
-  display: flex;
-  flex-wrap: nowrap;
-  --color-background: #232a34;
-  --color-foreground: #fff;
   background: #232a34;
   background: var(--color-background, #232a34);
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -36,7 +36,6 @@ code {
 }
 .Unorder {
   display: flex;
-  flex-shrink: inherit;
   list-style: none;
   margin: 0%;
 }
@@ -77,17 +76,22 @@ code {
   text-transform: capitalize;
   font-family: "Abel", sans-serif;
 }
-.catContainer {
+/* .catContainer {
   display: grid;
   grid-gap: 1px;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 100px;
-}
-/* .catContainer {
+} */
+.catContainer {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 100px;
-} */
+  justify-content: center;
+  margin-top: 10px;
+}
+img {
+  /* max-width: 100%; */
+  margin: 5px;
+}
 #enterKey {
   align-items: center;
   font-style: normal;
@@ -103,9 +107,9 @@ code {
   margin-top: 10px;
 }
 .catImages {
-  transition: all 1s linear;
+  transition: all 1s;
   height: 400px;
-  width: 490px;
+  width: 450px;
 }
 .catImages:hover {
   cursor: pointer;
@@ -119,7 +123,4 @@ code {
   justify-content: center;
   align-items: center;
   margin-top: 300px;
-}
-img {
-  max-width: 100%;
 }
