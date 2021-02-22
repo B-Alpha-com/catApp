@@ -19,7 +19,8 @@ class App extends Component {
   }
 
   onclick = () => {
-    const query = this.state.searchText;
+    const query =
+      this.state.searchText.length > 0 ? this.state.searchText : "cat";
     const orientation = "landscape";
     const page = 6;
     client.photos
@@ -30,16 +31,17 @@ class App extends Component {
     this.setState({ searchText: "" });
     this.setState({ loading: false });
   };
+
   onKeyPress = (event) => {
     if (event.key === "Enter") {
-      const query = this.state.searchText;
+      const query =
+        this.state.searchText.length > 0 ? this.state.searchText : "cat";
       const orientation = "landscape";
       const page = 6;
       client.photos
         .search({ query, orientation, page, per_page: 80 })
         .then((pictures) => {
           this.setState({ cats: pictures });
-          console.log("cat", this.state.cats);
         });
       this.setState({ searchText: "" });
     }
@@ -51,12 +53,11 @@ class App extends Component {
     const query = "cats";
     const orientation = "landscape";
     const page = 6;
-    this.setState({ loading: true });
+    this.setState({ loading: false });
     client.photos
       .search({ query, orientation, page, per_page: 80 })
       .then((pictures) => {
         this.setState({ cats: pictures });
-        console.log("cat", pictures);
       });
     this.setState({ loading: false });
   }
@@ -74,7 +75,7 @@ class App extends Component {
           value={searchText}
           keyPress={this.onKeyPress}
         />
-        {loading === true ? (
+        {this.state.loading === true ? (
           <div className="loader">
             <hi>loading....</hi>
           </div>
