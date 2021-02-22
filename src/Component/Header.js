@@ -2,13 +2,13 @@ import React from "react";
 
 const Header = ({ onclick, onsearch, value, keyPress }) => {
   return (
-    <div className="nav_1">
-      <nav>
-        <ul className="nav_2">
+    <>
+      <nav className="main_nav">
+        <ul className="header_Ul">
           <li>
             <h1 className="text">SheisaCatLover</h1>
           </li>
-          <li>
+          <li className="li_input">
             <input
               className="input"
               type="text"
@@ -20,13 +20,18 @@ const Header = ({ onclick, onsearch, value, keyPress }) => {
             />
           </li>
           <li>
-            <button id="enterKey" Title="search for Cats" onClick={onclick}>
+            <button
+              className="enterKey"
+              id="enterKey"
+              Title="search for Cats"
+              onClick={onclick}
+            >
               Enter
             </button>
           </li>
         </ul>
       </nav>
-    </div>
+    </>
   );
 };
 

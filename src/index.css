@@ -15,53 +15,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.nav_1 {
-  margin-top: 0%;
-  background-color: orange;
+.header_Ul {
   display: flex;
-  position: fixed;
-  width: 100%;
-}
-.nav_2 {
-  display: flex;
+  margin: 0 0;
   list-style: none;
+  background-color: orange;
 }
+.li_input {
+  margin-left: auto;
+}
+
 @media only screen and (max-width: 400px) {
-  li {
+  .header_Ul {
     font-size: 10px;
-    font-weight: 100px;
-    padding: 0.3;
-  }
-
-  .text {
-    font-size: 0.4rem;
-  }
-  .input {
-    padding: 0.3;
-    font-size: 5px;
-    font-weight: 100px;
-  }
-  #enterKey {
-    padding: 0.3;
-    font-size: 5px;
-    font-weight: 100px;
+    padding: 0.2rem 0.2rem;
+    font-family: "Playfair Display", serif;
   }
 }
 
-li {
-}
-.text {
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: "Playfair Display", serif;
-  color: black;
-  margin-top: 0%;
-  margin-left: 0%;
-}
 input {
-  margin-left: 200px;
-  padding: 0.8rem;
+  padding: 0.5rem;
   padding-left: 50px;
   padding-right: 100px;
   margin-bottom: 0%;
@@ -83,13 +56,26 @@ input {
   text-transform: capitalize;
   font-family: "Abel", sans-serif;
 }
+@media only screen and (max-width: 400px) {
+  .li_input {
+    margin-left: 50px;
+  }
+  .input {
+    font-size: 10px;
+    padding: 0.4rem 0.4rem;
+    position: relative;
+  }
+  ::placeholder {
+    font-size: 8px;
+  }
+}
 #enterKey {
   align-items: center;
   font-style: normal;
   font-size: 20px;
   font-weight: 300;
   font-family: "Abel", sans-serif;
-  padding: 0.8rem;
+  padding: 0.5rem;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border: none;
@@ -97,10 +83,23 @@ input {
   cursor: pointer;
   margin-top: 10px;
 }
+@media only screen and (max-width: 400px) {
+  #enterKey {
+    padding: 0.4rem 0.4rem;
+    font-size: 10px;
+  }
+}
 .catImages {
   height: 400px;
-  width: 480px;
+  width: 470px;
 }
+@media only screen and (max-width: 400px) {
+  .catImages {
+    height: 400px;
+    width: 375px;
+  }
+}
+
 .catContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
