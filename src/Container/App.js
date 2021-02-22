@@ -74,7 +74,6 @@ class App extends Component {
           value={searchText}
           keyPress={this.onKeyPress}
         />
-
         {loading === true ? (
           <div className="loader">
             <hi>loading....</hi>
