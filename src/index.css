@@ -18,55 +18,59 @@ code {
   position: fixed;
   width: 100%;
   background-color: orange;
+  background-image: url("./Assets/cat.jpg");
   margin-top: 0%;
+  top: 0;
 }
-.header_Ul {
+h1 {
+  margin-top: 3px;
+  font-weight: bold;
+  font-size: 30px;
   display: flex;
-  margin: 0 0;
-  list-style: none;
-  /* background-color: orange; */
+  justify-content: center;
+  font-family: "Playfair Display", serif;
 }
-.li_input {
-  margin-left: 20rem;
-}
-
 @media only screen and (max-width: 500px) {
-  .header_Ul {
-    font-size: 15px;
-    padding: 0.2rem 0.2rem;
+  h1 {
+    font-size: 20px;
     font-family: "Playfair Display", serif;
   }
 }
+.header_Ul {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0;
+  list-style: none;
+  padding-bottom: 5px;
+}
 
 input {
-  padding: 0.5rem;
+  display: flex;
+  padding: 0.3rem;
   padding-left: 50px;
-  padding-right: 100px;
+  padding-right: 50rem;
   margin-bottom: 0%;
   border: none;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-right-color: transparent;
   font-size: 20px;
-  margin-top: 10px;
+
   margin-bottom: 0;
   font-weight: 300;
   font-family: "Abel", sans-serif;
-  flex-shrink: 2;
-  flex-grow: 0.2;
 }
 ::placeholder {
-  font-size: 25px;
+  font-size: 20px;
   text-transform: capitalize;
   font-family: "Abel", sans-serif;
 }
 @media only screen and (max-width: 500px) {
-  .li_input {
-    margin-left: 50px;
-  }
   .input {
     font-size: 10px;
-    padding: 0.6rem 0.6rem;
+    padding: 0.4rem 0.8rem;
     position: relative;
   }
   ::placeholder {
@@ -74,22 +78,26 @@ input {
   }
 }
 #enterKey {
+  display: flex;
   align-items: center;
   font-style: normal;
   font-size: 20px;
   font-weight: 300;
   font-family: "Abel", sans-serif;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   border: none;
   background-color: #fff;
   cursor: pointer;
-  margin-top: 10px;
+
+  margin-left: 10px;
 }
 @media only screen and (max-width: 500px) {
   #enterKey {
-    padding: 0.6rem 0.6rem;
+    padding: 0.3rem 0.6rem;
     font-size: 10px;
   }
 }
@@ -105,13 +113,15 @@ input {
 }
 
 .catContainer {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* gap: 10px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 110px;
+}
+@media only screen and (max-width: 500px) {
+  .catContainer {
+    margin-top: 80px;
+  }
 }
 .catList {
   margin: 5px;
@@ -122,4 +132,45 @@ input {
   height: 1000px;
 
   border: 5px black solid;
+}
+
+.nextButton {
+  display: flex;
+
+  padding: 5px 20px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 10px;
+  border-color: none;
+  font-family: "Abel", sans-serif;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .nextButton {
+    display: flex;
+    font-weight: normal;
+    padding: 0.2rem 0.6rem;
+  }
+}
+.previousButton {
+  display: flex;
+  padding: 5px 20px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 10px;
+  border-color: none;
+  font-family: "Abel", sans-serif;
+  cursor: pointer;
+  margin-left: 100px;
+}
+@media only screen and (max-width: 500px) {
+  .previousButton {
+    display: flex;
+    font-weight: normal;
+    padding: 0.2rem 0.6rem;
+    margin-left: 50px;
+  }
 }

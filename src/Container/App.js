@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Header from "../Component/Header";
 import { createClient } from "pexels";
 import CatList from "../Component/CatList";
-import NextPage from "../Component/NextPageButton";
 import ErrorBoundary from "../Component/ErrorHandler";
 
 const client = createClient(
@@ -22,7 +21,7 @@ class App extends Component {
     const query =
       this.state.searchText.length > 0 ? this.state.searchText : "cat";
     const orientation = "landscape";
-    const page = 6;
+    const page = 1;
     client.photos
       .search({ query, orientation, page, per_page: 80 })
       .then((pictures) => {
@@ -31,13 +30,40 @@ class App extends Component {
     this.setState({ searchText: "" });
     this.setState({ loading: false });
   };
+  onclickNext = () => {
+    const nextPage = this.state.cats.next_page;
+    client.photos
+      .search({
+        nextPage,
+      })
+      .then((pictures) => {
+        this.setState({ cats: pictures });
+      });
+    console.log("hey", nextPage);
+    console.log("oh", this.state.cats);
+
+    this.setState({ loading: false });
+  };
+  onclickPrevious = () => {
+    const previousPage = this.state.cats.prev_page;
+    client.photos
+      .search({
+        previousPage,
+      })
+      .then((pictures) => {
+        this.setState({ cats: pictures });
+      });
+    console.log("yay", previousPage);
+
+    this.setState({ loading: false });
+  };
 
   onKeyPress = (event) => {
     if (event.key === "Enter") {
       const query =
         this.state.searchText.length > 0 ? this.state.searchText : "cat";
       const orientation = "landscape";
-      const page = 6;
+      const page = 1;
       client.photos
         .search({ query, orientation, page, per_page: 80 })
         .then((pictures) => {
@@ -52,7 +78,7 @@ class App extends Component {
   componentDidMount() {
     const query = "cats";
     const orientation = "landscape";
-    const page = 6;
+    const page = 1;
     this.setState({ loading: false });
     client.photos
       .search({ query, orientation, page, per_page: 80 })
@@ -65,11 +91,12 @@ class App extends Component {
   render() {
     const { cats, searchText, loading } = this.state;
     const catPictures = cats.photos;
-    const nextCat = cats.next_page;
 
     return (
       <div className="App">
         <Header
+          nextCat={this.onclickNext}
+          previous={this.onclickPrevious}
           onclick={this.onclick}
           onsearch={this.onsearch}
           value={searchText}
@@ -84,7 +111,6 @@ class App extends Component {
             <div className="catContainer">
               {catPictures && <CatList catsPhoto={catPictures} />}
             </div>
-            <NextPage nextCat={nextCat} />
           </ErrorBoundary>
         )}
       </div>
