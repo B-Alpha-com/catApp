@@ -12,8 +12,10 @@ class App extends Component {
     super();
     this.state = {
       cats: [],
-      searchText: "",
+      searchText: "cat",
       loading: false,
+      page: 1,
+      currentSearch: "",
     };
   }
 
@@ -25,37 +27,41 @@ class App extends Component {
     client.photos
       .search({ query, orientation, page, per_page: 80 })
       .then((pictures) => {
-        this.setState({ cats: pictures });
+        this.setState({
+          cats: pictures,
+          currentSearch: this.state.searchText,
+          searchText: "",
+        });
       });
-    this.setState({ searchText: "" });
     this.setState({ loading: false });
   };
   onclickNext = () => {
-    const nextPage = this.state.cats.next_page;
+    const nPage = this.state.page + 1;
     client.photos
       .search({
-        nextPage,
+        page: nPage,
+        query: this.state.currentSearch,
       })
       .then((pictures) => {
-        this.setState({ cats: pictures });
+        this.setState({ cats: pictures, page: nPage });
       });
-    console.log("hey", nextPage);
-    console.log("oh", this.state.cats);
 
     this.setState({ loading: false });
   };
   onclickPrevious = () => {
-    const previousPage = this.state.cats.prev_page;
-    client.photos
-      .search({
-        previousPage,
-      })
-      .then((pictures) => {
-        this.setState({ cats: pictures });
-      });
-    console.log("yay", previousPage);
+    if (this.state.page > 1) {
+      const PrevPage = this.state.page - 1;
+      client.photos
+        .search({
+          page: PrevPage,
+          query: this.state.currentSearch,
+        })
+        .then((pictures) => {
+          this.setState({ cats: pictures, page: PrevPage });
+        });
 
-    this.setState({ loading: false });
+      this.setState({ loading: false });
+    }
   };
 
   onKeyPress = (event) => {
@@ -76,7 +82,7 @@ class App extends Component {
     this.setState({ searchText: event.target.value });
   };
   componentDidMount() {
-    const query = "cats";
+    const query = this.state.searchText;
     const orientation = "landscape";
     const page = 1;
     this.setState({ loading: false });
