@@ -12,10 +12,10 @@ class App extends Component {
     super();
     this.state = {
       cats: [],
-      searchText: "cat",
+      searchText: "",
       loading: false,
       page: 1,
-      currentSearch: "",
+      currentSearch: "cat",
     };
   }
 
@@ -82,7 +82,7 @@ class App extends Component {
     this.setState({ searchText: event.target.value });
   };
   componentDidMount() {
-    const query = this.state.searchText;
+    const query = this.state.currentSearch;
     const orientation = "landscape";
     const page = 1;
     this.setState({ loading: false });

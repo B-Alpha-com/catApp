@@ -28,14 +28,14 @@ const Header = ({ onclick, onsearch, value, keyPress, nextCat, previous }) => {
             </button>
           </li>
           <li>
-            <button className="previousButton" onClick={previous}>
+            <i className="previousButton" onClick={previous}>
               Back{" "}
-            </button>
+            </i>
           </li>
           <li>
-            <button className="nextButton" onClick={nextCat}>
+            <i className="nextButton" onClick={nextCat}>
               Next
-            </button>
+            </i>
           </li>
         </ul>
       </nav>
